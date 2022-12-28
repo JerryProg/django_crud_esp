@@ -78,3 +78,20 @@ class CustomUser(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+# class UserInfo(models.Model):
+#     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     first_name = models.CharField("Nombre", max_length=100, null=True, blank=True)
+#     last_name = models.CharField("Apellidos", max_length=100, null=True, blank=True)
+#     birth_date = models.DateTimeField("Fecha de Nacimiento", null=True, blank=True)
+#     phone_num = models.CharField("Telefono", max_length=20, null=True, blank=True)
+#     address = models.CharField("Dirección", max_length=100, null=True, blank=True)
+#     city = models.CharField("Ciudad", max_length=100, null=True, blank=True)
+#     country = models.CharField("País", max_length=100, null=True, blank=True)
+    
+#     class Meta:
+#         db_table = "user_info"
+
+#     def get_absolute_url(self):
+#         return reverse('user-info-detail', kwargs={'pk': self.pk})

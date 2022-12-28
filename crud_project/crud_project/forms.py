@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
 from django.contrib.auth import get_user_model
 
 
@@ -46,3 +46,24 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = Custom_user_model
         fields = ('email', 'password', 'is_active', 'is_admin')
+
+
+class LoginForm(AuthenticationForm):
+    
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
+
+class UpdateViewForm(forms.ModelForm):
+    class Meta:
+        model = Custom_user_model
+        fields = ['email']
+        
+    new_password = forms.CharField(label='Nueva Contraseña', widget=forms.PasswordInput)
+        
+    def __init__(self, *args, **kwargs):        
+        super(UpdateViewForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'   

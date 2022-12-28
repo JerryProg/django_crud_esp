@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cuser_app'
+    #My apps
+    'cuser_app',
+    'home_app',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #User configurations
 AUTH_USER_MODEL = 'cuser_app.CustomUser'
+
+#Urls
+LOGOUT_REDIRECT_URL ='home'
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'login'
+
+
+

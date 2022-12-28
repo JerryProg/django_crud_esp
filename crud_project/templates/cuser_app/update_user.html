@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Modificar Usuario {% endblock %}
+{% block content %}
+<p class="h4 p-2"> Modificar Usuario (User) </p>
+
+<form class="col-lg-5 p-2" method="POST">
+    {% csrf_token %}                
+    {{ form.as_div }}
+    <div class="p-2">
+        <button type="submit" class="btn btn-warning text-center" value="Save"> Modificar </button>
+        <a class="btn btn-primary text-center m-2" href="{% url 'home' %}"> Cancelar </a>
+    </div>
+    <p> {{ form.non_field_errors }} </p>                
+</form>
+{% endblock %}

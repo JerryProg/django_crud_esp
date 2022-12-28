@@ -31,5 +31,13 @@ class MyUserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
+# class UIAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'user_id', 'first_name', 'last_name', 'birth_date', 
+#                     'phone_num', 'address', 'city', 'country')
+#     list_filter = ('user_id',)
+
+#     search_fields = ('user_id', 'city',)
+
 admin.site.register(CustomUser, MyUserAdmin)
 admin.site.unregister(Group)
+# admin.site.register(UserInfo, UIAdmin)

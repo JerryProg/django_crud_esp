@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    {% include "messages.html" %}
+
+    <div class="container-fluid">
+        {% if user.is_authenticated %}
+            <h2 class="h3 text-center"> Usuarios. </h2>
+            <table class="table table-md text-center">
+                <thead>
+                    <tr>
+                        <th scope="row"> id </th>
+                        <th scope="row"> email </th>
+                        <th scope="row"> Fecha ultimo acceso </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in users_list %}
+                    <tr>
+                        <td scope="col"> {{ item.id }} </td>
+                        <td scope="col"> {{ item.email }} </td>
+                        <td scope="col"> {{ item.last_login|date:"d-m-Y G:i" }} </td>
+                        {% if user.is_admin %}
+                            <th scope="row"> 
+                                 <a class="btn btn-warning" href="{% url 'update_user' item.id %}" role="button"> Editar </a>
+                            </th>
+                            <th scope="row">
+                                 <a class="btn btn-danger" href="{% url 'delete_user' item.id %}" role="button"> Borrar </a>
+                            </th>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <p class="h3 text-center"> Para ver los usuarios registrados debes iniciar sesión. </p>
+        {% endif %}
+    </div>
+
+{% endblock %}

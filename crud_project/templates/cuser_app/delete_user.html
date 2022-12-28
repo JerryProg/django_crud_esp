@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Borrar Usuario {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <p class="h4 p-2"> Eliminar Usuario (User) </p>
+    <form class="col g-1" method="POST">
+        {% csrf_token %}                
+        <p class="h5"> ¿Esta seguro de borrar el usuario? <br> </p>
+        <p class="h5"> {{ object }} </p>
+
+        <div class="p-2">
+            <button type="submit" class="btn btn-danger text-center m-2" value="Confirm"> Confirmar </button>
+            <a class="btn btn-primary text-center m-2" href="{% url 'home' %}"> Cancelar </a>
+        </div>
+    </form>    
+</div>
+{% endblock %}

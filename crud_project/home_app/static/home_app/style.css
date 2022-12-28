@@ -1,0 +1,13 @@
+.gradient-home {
+    background: rgb(0,212,255);
+    background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,0.8575630935968137) 35%, rgba(0,74,255,0.5774510487788865) 100%); 
+}
+
+.nav-item:hover{
+    background-color:#cdf4fc;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+    margin-top: 0;
+}

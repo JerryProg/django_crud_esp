@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Ingreso {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-lg-4 mx-auto p-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <div class="col">
+                        {% load static %}
+                        <img src="#" class="img-fluid mx-auto" width="230"
+                        height="59" alt="tech">
+                        <p class="h5 card-text"> Inicia sesión. </p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="d-grid col" method="POST">
+                        {% csrf_token %}                
+                        {{ form.as_div }}
+                        <div class="text-center mt-1">
+                            <button type="submit" class="btn btn-info"> Iniciar </button>
+                        </div>
+                    </form>
+                    <p class="h6"> {{ form.non_field_errors }} </p>
+                </div>
+                <div class="card-footer">
+                    <p class="h6 text-center"> 
+                        ¿No tienes una cuenta? 
+                        <a href="{% url 'register' %}"> Crear cuenta </a>
+                        <br>
+                        <small>
+                            Al ingresar, aceptas las condiciones de uso y el aviso de privacidad.
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

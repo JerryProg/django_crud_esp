@@ -1,4 +1,4 @@
-"""crud_project URL Configuration
+"""cuser_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from cuser_app.views import LoginView, LogoutView, RegisterView, UpdateUserView, DeleteUserView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('cuser_app.urls')),
-    path('', include('home_app.urls')),
+    path('login/', LoginView.as_view(), name="login"),
+    path("", LogoutView.as_view(), name="logout"),
+    path("register/", RegisterView.as_view(), name="register"),
+    path('<pk>/update/', UpdateUserView.as_view(), name="update_user"),
+    path('<pk>/delete/', DeleteUserView.as_view(), name="delete_user"),
 ]
